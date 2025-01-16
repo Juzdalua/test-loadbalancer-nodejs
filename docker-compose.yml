@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  server1:
+    build:
+      context: ./apps/server1
+    ports:
+      - "3000:3000"
+  server2:
+    build:
+      context: ./apps/server2
+    ports:
+      - "3001:3001"

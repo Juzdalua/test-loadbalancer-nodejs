@@ -6,6 +6,6 @@ dotenv.config({
 
 const app = express();
 
-app.listen(process.env.SERVER2_PORT, () => {
-  console.log(`✅ Check Server running on PORT: ${process.env.SERVER2_PORT}`);
+app.listen(process.env.PORT_SERVER2, () => {
+  console.log(`✅ Check Server running on PORT: ${process.env.PORT_SERVER2}`);
 });

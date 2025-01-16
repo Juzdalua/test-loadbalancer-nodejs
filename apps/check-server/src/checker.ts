@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-enum MainServerNum {
-  server1 = 1,
-  server2 = 2
+enum MainServerIdx {
+  server1 = 0,
+  server2 = 1
 }
 
 class Checker {
   private static instance: Checker | undefined;
-  private stableServer = MainServerNum.server1;
+  private stableServer = MainServerIdx.server1;
+  private serverPorts = [process.env.PORT_SERVER1, process.env.PORT_SERVER2];
 
   constructor() {}
 
@@ -18,8 +19,8 @@ class Checker {
     return this.instance;
   }
 
-  public getStabeServerNum(): MainServerNum {
-    return this.stableServer;
+  public getStableServerPort(): number {
+    return Number(this.serverPorts[this.stableServer]);
   }
 
   public async healthCheck(): Promise<void> {

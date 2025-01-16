@@ -1,6 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
-import Interceptor from './interceptor';
+import Interceptor from './utils/interceptor';
+import Checker from './utils/checker';
 
 const InitServer = async () => {
   dotenv.config({
@@ -11,7 +12,6 @@ const InitServer = async () => {
   app.use(express.json());
 
   app.use(async (req: Request, res: Response, next: NextFunction) => {
-    console.log('use')
     await Interceptor.getInstance().connectMainServer(req);
     // next();
   });
@@ -33,4 +33,4 @@ const InitServer = async () => {
 };
 
 InitServer();
-// setInterval(Checker.getInstance().healthCheck, 5000);
+setInterval(Checker.getInstance().healthCheck, 5000);

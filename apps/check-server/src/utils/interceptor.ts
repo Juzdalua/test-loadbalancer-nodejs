@@ -14,7 +14,6 @@ class Interceptor {
   }
 
   public async connectMainServer(req: Request): Promise<Object | null> {
-    console.log('connectMainServer')
     try {
       console.log('method', req.method);
       console.log('query', req.query);

@@ -33,4 +33,4 @@ const InitServer = async () => {
 };
 
 InitServer();
-setInterval(Checker.getInstance().healthCheck, 5000);
+setInterval(() => Checker.getInstance().healthCheck(), 5000);

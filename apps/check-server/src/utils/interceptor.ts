@@ -23,7 +23,7 @@ class Interceptor {
       console.log('token', req.headers['authorization']?.split(' ')[1]);
 
       const nextUrl = Checker.getInstance().getStableServer().getServerUrl();
-      console.log(nextUrl,'nextUrl')
+      console.log('nextUrl', nextUrl);
       switch (req.method) {
         default:
         case 'GET': {

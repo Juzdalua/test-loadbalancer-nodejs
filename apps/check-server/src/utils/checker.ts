@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios from 'axios';
 import MainServer from './server';
 
 class Checker {
@@ -31,7 +31,7 @@ class Checker {
     try {
       const promiseMap = this.connectedServers.map(async (s) => {
         const startTime = Date.now();
-        const response = await axios.get(`${s.getServerUrl()}/health`);
+        const response = await axios.get(`${s.getServerUrl()}/health-check`);
 
         if (response.status == 200) {
           const responseTime = Date.now() - startTime;
@@ -64,6 +64,8 @@ class Checker {
           return a.getAmount() - b.getAmount();
         });
         this.stableServerId = stableServers[0].getServerId();
+        console.log(`[Health-Check done] [Stable Server id: ${stableServers[0].getServerId()}, URL: ${stableServers[0].getServerUrl()}]`);
+        break;
       }
     } catch (error) {
       console.log(`Health Check Error: ${error}`);

@@ -22,8 +22,9 @@ class Checker {
     return this.instance;
   }
 
-  public getStableServer(): number {
-    return this.stableServerId;
+  public getStableServer(): MainServer {
+    let server = this.connectedServers.find((s) => s.getServerId() == this.stableServerId);
+    return server ?? this.connectedServers[0];
   }
 
   public async healthCheck(): Promise<void> {

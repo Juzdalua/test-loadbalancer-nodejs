@@ -22,7 +22,7 @@ class Interceptor {
       console.log('path', req.path);
       console.log('token', req.headers['authorization']?.split(' ')[1]);
 
-      const nextUrl = `${process.env.BASE_URL}:${Checker.getInstance().getStableServerPort()}`;
+      const nextUrl = Checker.getInstance().getStableServer().getServerUrl();
       console.log(nextUrl,'nextUrl')
       switch (req.method) {
         default:

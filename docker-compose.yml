@@ -1,12 +1,25 @@
 version: '3.8'
-services:
+services: # 컨테이너들을 작성
+  check-server:
+    build:
+      context: ./apps/check-server # Dockerfile 경로
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    container_name: check-server-container
+
   server1:
     build:
       context: ./apps/server1
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "4001:4001" # 외부포트 : 내부포트 / 외부포트로 접근하면 내부포트로 연결
+    container_name: server1-container
+
   server2:
     build:
       context: ./apps/server2
+      dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "4001:4002"
+    container_name: server2-container
